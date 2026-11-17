@@ -1,49 +1,38 @@
 # HA Dashboard Design
 
-Version **0.1.0**. Gemeinsame dunkle Designbasis für Home-Assistant-Dashboards, als natives Theme. Hintergrund, Oberflächen, Textfarben, Kartenrundungen und Schatten sind zentral definiert. Raumkarten erhalten zusätzlich ihre bereits unterstützten Variablen für Innenabstände, Kachelrundungen, Kachelabstände, Überschrift und Trennlinie.
+Version **0.1.1**. Native dunkle Themebasis für die allgemeine Home-Assistant-Oberfläche. Das Theme steuert Seitenhintergrund, Toolbar, Seitenleiste sowie allgemeine Text- und Akzentfarben.
 
-## Installation und erster Test
+## Trennung vom Kartendesign
 
-1. Dieses Repository im **Marketplace als Theme** hinzufügen und installieren. Es ist keine Dashboard-Karte und benötigt keine JavaScript-Ressource.
-2. Themes müssen in Home Assistant geladen sein. Bei einer manuellen Theme-Aktualisierung ist gegebenenfalls `frontend.reload_themes` erforderlich; diese Aktion bewusst selbst ausführen. Ein HA-Neustart ist bei bereits eingerichteter Theme-Einbindung nicht nötig.
-3. Zunächst ausschließlich in der Ansicht **Zuhause / Main** das Theme **HA Dashboard Design** auswählen. Die gespeicherte Ansichtsoption lautet:
+Kartenhintergründe, Rahmen, Rundungen, Schatten, Innenabstände, Kachelgrößen und Überschriften gehören zur Karte. Das Theme definiert dafür weder `ha-card-*` noch `room-control-*`-Variablen. Vorhandene Karteneinstellungen und card-mod-Stile bleiben bestehen, auch wenn ein Farbwert zufällig dem allgemeinen Theme entspricht.
+
+Allgemeine Text-/Akzentfarben und Oberflächenvariablen können nach den Regeln von Home Assistant auch von Karten geerbt werden. Eine Karte, die ihre Farben unabhängig festlegt, muss diese selbst definieren. Das Theme schreibt keine individuellen Zustands-, Anwesenheits- oder Warnfarben vor.
+
+## Installation und Auswahl
+
+Dieses Repository im **Marketplace als Theme** hinzufügen und installieren. Keine JavaScript-Ressource erforderlich. Die vorhandene Konfiguration `frontend: themes: !include_dir_merge_named themes` genügt.
+
+In der Ansicht oder im Profil **HA Dashboard Design** auswählen. Eine feste Ansichtszuweisung lautet:
 
 ```yaml
 theme: HA Dashboard Design
 ```
 
-Das ist eine einzelne Eigenschaft der vorhandenen Ansicht, keine vollständige Dashboard-Konfiguration. Beim Bearbeiten ausschließlich die bisherige `theme`-Eigenschaft ersetzen. Nicht im Benutzerprofil oder als globales Standardtheme setzen, solange der Test nur Main betreffen soll.
+Das ist eine einzelne Eigenschaft einer vorhandenen Ansicht, keine vollständige Dashboard-Konfiguration. Eine Profilauswahl gilt auch für die allgemeine Oberfläche. Es werden keine Konfigurationen automatisch verändert.
 
-Das Theme gilt durch die gespeicherte Ansichtsauswahl auch auf weiteren Geräten. Die bestehende Einbindung `frontend: themes: !include_dir_merge_named themes` genügt. Das Repository selbst aktiviert keine Ansicht und verändert keine Konfiguration.
+Nach Installation bei Bedarf Themes bewusst selbst neu laden (`frontend.reload_themes`). Kein HA-Neustart bei bereits eingerichteter Theme-Einbindung erforderlich.
 
-## Gemeinsame Werte
+## Wechsel von 0.1.0
 
-In `themes/ha-dashboard-design.yaml` stehen die zentralen Werte mit dem Präfix `design-`. Native HA-Variablen und die vorhandenen `room-control-*`-Variablen verweisen darauf. Das dunkle Design bleibt farblich gleich, auch wenn das Gerät zwischen hell und dunkel wechselt. Es enthält keine eigene Schriftart und lädt keine externen Dateien.
+0.1.0 enthielt globale Kartenvariablen. 0.1.1 entfernt diese Kopplung. Lokale Kartenstile, die während der ersten Umstellung entfernt wurden, müssen zusätzlich aus dem Backup wiederhergestellt werden. Auf der ursprünglichen Installation wurden diese bereits vor dem Update gezielt wiederhergestellt. Das Theme kann keine gelöschten Dashboard-Regeln rekonstruieren.
 
-- Seitenhintergrund: `design-background`
-- Toolbar und Oberflächen: `design-surface`
-- Text, gedämpfter Text und Akzent: `design-text`, `design-muted`, `design-accent`
-- Kartenverlauf, Rundung und Schatten: `design-card-background`, `design-card-radius`, `design-card-shadow`
-- Raumkarten: `design-card-padding`, `design-item-gap`, `design-item-radius`, `design-title-size`, `design-header-line`
-
-Native Karten übernehmen die von ihnen unterstützten HA-Themevariablen. Fremde Custom Cards können eigene Variablen brauchen oder feste Werte enthalten; ein Theme kann diese nicht pauschal ersetzen. Die zusätzlichen Raumkartenvariablen werden von **Room Control Card** unterstützt. Diese Trennung hält das Grunddesign unabhängig von einer bestimmten Karte.
-
-## Schrittweise Umstellung
-
-1. Main auswählen, Darstellung und Companion-App prüfen.
-2. Danach weitere Seiten einzeln auf dasselbe Theme umstellen.
-3. Dort ausschließlich nachweislich gleichwertige manuelle Grunddesign-Regeln entfernen. Harte CSS-Werte und `!important` können das Theme weiterhin übersteuern.
-4. Individuelle Kartenregeln erhalten: Anwesenheitsfarben, Sichtbarkeit, Aktionen, Zustandsfarben, Zahlenformate und besondere Layouts bleiben in der jeweiligen Konfiguration.
-
-Dieses Theme enthält keine persönlichen Entitäten und keine Aktionen. Es installiert keinen Beobachter, keine Timer, keine automatischen Reloads und keine globale CSS-Injektion. Der visuelle Praxistest steht nach Installation noch aus.
-
-Zurücksetzen: In Main wieder das bisherige Theme auswählen. Auf der Ausgangsinstallation war dies `whatsapp_theme`. Andere Ansichten bleiben bei einer Umstellung nur von Main unverändert.
+Der Themewechsel verändert weder Entitäten, Aktionen, Sichtbarkeit noch die Anordnung. Keine Timer, automatischen Reloads, externe Schriftarten oder CSS-Injektion. Der visuelle Test der korrigierten Themeversion folgt nach Installation.
 
 ## Quellen
 
 - [Home Assistant: Themes](https://www.home-assistant.io/integrations/frontend/)
 - [Theme pro Ansicht](https://www.home-assistant.io/dashboards/views/)
-- [Marketplace: Repository-Struktur für Themes](https://contributors.home-assistant.io/marketplace/reference/repository-structure/)
+- [Marketplace: Theme-Struktur](https://contributors.home-assistant.io/marketplace/reference/repository-structure/)
 
 ## Lizenz
 

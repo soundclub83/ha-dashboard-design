@@ -1,6 +1,6 @@
 # HA Dashboard Design
 
-Version **0.1.2**. Native dunkle Themebasis für die allgemeine Home-Assistant-Oberfläche. Das Theme steuert Seitenhintergrund, Toolbar, Seitenleiste sowie allgemeine Text- und Akzentfarben.
+Version **0.1.3**. Native dunkle Themebasis für die allgemeine Home-Assistant-Oberfläche. Das Theme steuert Seitenhintergrund, Toolbar, Seitenleiste sowie allgemeine Text- und Akzentfarben.
 
 ## Trennung vom Kartendesign
 
@@ -47,3 +47,16 @@ Die `design-media-*`-Werte steuern Hintergrund, Rahmen, Rundung, Text, gedämpft
 Nach Installation **und Laden** von Theme 0.1.2 können die identischen lokalen `ha-card`-Grundwerte, die lokale `.mmp__bg`-Korrektur und die zwei konstanten Player-Farbvariablen entfernt werden. Zustandsabhängige Icon-/Titel-Farben und alle funktionalen Optionen verbleiben an der Karte. Vorher Backup anlegen. Die visuellen Ergebnisse und die Theme-Anbindung auf den eingesetzten Playern sind nach Installation zu prüfen.
 
 [card-mod: Theme-Unterstützung](https://github.com/thomasloven/lovelace-card-mod/wiki/Card-mod-Themes)
+
+## HA-Oberfläche ab 0.1.3
+
+`design-admin-surface`, `design-admin-border`, `design-admin-radius` sowie `design-input-background` und `design-menu-background` bilden die zentralen Werte für Verwaltungsoberflächen.
+
+- Native HA-Variablen: Panelhintergrund, Such-/Werkzeugleisten, Tabellen einschließlich Marketplace, Eingabe- und Auswahlfelder sowie Dialogflächen.
+- `card-mod-config`: Oberflächen der HA-Einstellungen. Die `ha-card-*`-Variablen stehen ausschließlich in einem `:host`-Block dieses Panels und werden nicht global definiert.
+- `card-mod-dialog` und `card-mod-more-info`: Hintergrundvariablen in Dialogen und Entitätsdetails. Zustandsfarben, Warnungen und Bedienelemente behalten ihre Funktion.
+- Media-Block aus 0.1.2 bleibt separat erhalten. Dashboard-Konfigurationen werden durch das Repository nicht verändert.
+
+Diese Version verwendet die dokumentierten Panel-/Tabellenvariablen von Home Assistant 2026.11 und die Theme-Unterstützung von card-mod. Komponenten mit eigenen festen Farben oder weiteren Shadow-Root-Grenzen können zusätzliche gezielte Anpassungen benötigen. Eine vollständige visuelle Abdeckung aller HA-Unterseiten ist damit nicht zugesichert; die Screenshots von Einstellungen und Marketplace sind die ersten Prüfpunkte nach Installation.
+
+Geprüft: YAML, Variablenverweise, Media-Template mit und ohne Kartenkonfiguration, keine globalen Kartenvariablen. Der visuelle Live-Test von 0.1.3 steht nach Marketplace-Installation aus. Kein automatischer Reload und keine JavaScript-Injektion.

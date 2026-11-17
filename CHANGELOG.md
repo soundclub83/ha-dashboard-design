@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.3
+
+- Allgemeine Panel-, Suchleisten- und Tabellenhintergründe für Einstellungen und Marketplace.
+- Einheitliche Eingabefarben und Dialogoberflächen.
+- Kartenoberflächen im Einstellungsbereich ausschließlich über card-mod-config begrenzt.
+- Dialog- und More-info-Variablen nur innerhalb der jeweiligen Dialoge.
+- Keine globalen ha-card- oder room-control-Variablen; Media-Block bleibt kartentypspezifisch.
+- Sicherer Media-Template-Guard für Komponenten ohne config.type.
+
 ## 0.1.2
 
 - Gemeinsame Grundwerte für Mini Media Player zentral im Theme.

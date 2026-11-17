@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.2
+
+- Gemeinsame Grundwerte für Mini Media Player zentral im Theme.
+- Ausschließlich dieser Kartentyp erhält Hintergrund, Rahmen, Rundung, Text- und Akzentfarben über card-mod.
+- Eigene Hintergrundfläche des Players wird transparent; andere Kartentypen bleiben unberührt.
+- Individuelle zustandsabhängige Farben verbleiben lokal.
+- Lokale Duplikate erst nach Installation und Laden von 0.1.2 entfernen.
+
 ## 0.1.1
 
 - Trennt allgemeine Oberfläche und individuelles Kartendesign.

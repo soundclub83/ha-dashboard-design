@@ -1,7 +1,7 @@
-# HA Dashboard Design 0.1.1
+# HA Dashboard Design 0.1.2
 # Gemeinsame dunkle Designbasis. Anwendung pro Ansicht.
 HA Dashboard Design:
-  dashboard-design-version: "0.1.1"
+  dashboard-design-version: "0.1.2"
   design-background: "#121b22"
   design-surface: "#1f2c34"
   design-text: "#d5dee6"
@@ -31,6 +31,34 @@ HA Dashboard Design:
   mdc-theme-background: "var(--design-background)"
   mdc-theme-primary: "var(--design-accent)"
   mdc-theme-on-surface: "var(--design-text)"
+  # Nur Mini Media Player; keine allgemeinen ha-card-Vorgaben.
+  design-media-background: "rgba(145,165,185,.025)"
+  design-media-border: "1px solid rgba(145,170,190,.035)"
+  design-media-radius: "16px"
+  design-media-text: "#d5dee6"
+  design-media-muted: "#a1b4c2"
+  design-media-accent: "#6cdbc9"
+  mini-media-player-accent-color: "var(--design-media-accent)"
+  mini-media-player-base-color: "var(--design-media-text)"
+  card-mod-theme: "HA Dashboard Design"
+  card-mod-card: |
+    {% if config.type == 'custom:mini-media-player' %}
+    :host {
+      --mini-media-player-accent-color: var(--design-media-accent);
+      --mini-media-player-base-color: var(--design-media-text);
+    }
+    ha-card {
+      background: var(--design-media-background) !important;
+      border: var(--design-media-border) !important;
+      border-radius: var(--design-media-radius) !important;
+      box-shadow: none !important;
+      --primary-text-color: var(--design-media-text);
+      --secondary-text-color: var(--design-media-muted);
+      --mini-media-player-accent-color: var(--design-media-accent);
+      --mini-media-player-base-color: var(--design-media-text);
+    }
+    .mmp__bg { background: transparent !important; }
+    {% endif %}
   modes:
     dark: {}
     light: {}

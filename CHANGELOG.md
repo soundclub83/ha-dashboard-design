@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.5
+
+- Globale Standardhintergründe für Karten-/Menüflächen nach dem Vorbild eines vollständigen HA-Themes.
+- card-background-color und ha-card-background verwenden die gemeinsame Oberfläche statt HA-Schwarz.
+- Lokale Kartenhintergründe, Warnfarben und individuelle Layouts bleiben in den Dashboard-Konfigurationen erhalten.
+- Keine globalen Vorgaben für Kartenrundungen, Rahmen, Schatten, Größen oder Abstände.
+- Gezielter Media-Block bleibt erhalten. Für card-mod-Regeln außerhalb Lovelace muss card-mod als extra_module_url geladen werden.
+
 ## 0.1.4
 
 - Korrigiert card-mod-config für den Light-DOM-Router ha-panel-config: Elementselektor statt unwirksamem :host.

@@ -1,7 +1,7 @@
-# HA Dashboard Design 0.1.4
+# HA Dashboard Design 0.1.5
 # Gemeinsame dunkle Designbasis. Anwendung pro Ansicht.
 HA Dashboard Design:
-  dashboard-design-version: "0.1.4"
+  dashboard-design-version: "0.1.5"
   design-background: "#121b22"
   design-surface: "#1f2c34"
   design-text: "#d5dee6"
@@ -31,7 +31,7 @@ HA Dashboard Design:
   mdc-theme-background: "var(--design-background)"
   mdc-theme-primary: "var(--design-accent)"
   mdc-theme-on-surface: "var(--design-text)"
-  # Nur Mini Media Player; keine allgemeinen ha-card-Vorgaben.
+  # Gezielt abweichendes Design ausschließlich für Mini Media Player.
   design-media-background: "rgba(145,165,185,.025)"
   design-media-border: "1px solid rgba(145,170,190,.035)"
   design-media-radius: "16px"
@@ -106,6 +106,15 @@ HA Dashboard Design:
       --card-background-color: var(--design-admin-surface);
       --mdc-theme-surface: var(--design-menu-background);
     }
+  # Globale Standardflächen; lokale Karten-CSS-Regeln bleiben vorrangig.
+  card-background-color: "var(--design-surface)"
+  ha-card-background: "var(--design-surface)"
+  rgb-card-background-color: "31, 44, 52"
+  clear-background-color: "var(--design-background)"
+  paper-dialog-background-color: "var(--design-admin-surface)"
+  paper-listbox-background-color: "var(--design-menu-background)"
+  material-background-color: "var(--design-admin-surface)"
+  material-secondary-background-color: "var(--design-background)"
   modes:
     dark: {}
     light: {}

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.4
+
+- Korrigiert card-mod-config für den Light-DOM-Router ha-panel-config: Elementselektor statt unwirksamem :host.
+- Die begrenzten Oberflächenvariablen können dadurch an Einstellungsunterseiten wie Apps und Speicher vererbt werden.
+- Media-Regeln, Dashboard-Karten und native Marketplace-Tabellenvariablen unverändert.
+- Marketplace-Detailseiten besitzen einen separaten Panel-Root; deren schwarzen Kartenflächen sind mit dieser Korrektur noch nicht abgedeckt.
+
 ## 0.1.3
 
 - Allgemeine Panel-, Suchleisten- und Tabellenhintergründe für Einstellungen und Marketplace.

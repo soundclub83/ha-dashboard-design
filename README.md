@@ -1,6 +1,6 @@
 # HA Dashboard Design
 
-Version **0.1.3**. Native dunkle Themebasis für die allgemeine Home-Assistant-Oberfläche. Das Theme steuert Seitenhintergrund, Toolbar, Seitenleiste sowie allgemeine Text- und Akzentfarben.
+Version **0.1.4**. Native dunkle Themebasis für die allgemeine Home-Assistant-Oberfläche. Das Theme steuert Seitenhintergrund, Toolbar, Seitenleiste sowie allgemeine Text- und Akzentfarben.
 
 ## Trennung vom Kartendesign
 
@@ -53,10 +53,18 @@ Nach Installation **und Laden** von Theme 0.1.2 können die identischen lokalen 
 `design-admin-surface`, `design-admin-border`, `design-admin-radius` sowie `design-input-background` und `design-menu-background` bilden die zentralen Werte für Verwaltungsoberflächen.
 
 - Native HA-Variablen: Panelhintergrund, Such-/Werkzeugleisten, Tabellen einschließlich Marketplace, Eingabe- und Auswahlfelder sowie Dialogflächen.
-- `card-mod-config`: Oberflächen der HA-Einstellungen. Die `ha-card-*`-Variablen stehen ausschließlich in einem `:host`-Block dieses Panels und werden nicht global definiert.
+- `card-mod-config`: Oberflächen der HA-Einstellungen. Die `ha-card-*`-Variablen stehen ausschließlich in einem `ha-panel-config`-Block dieses Panels und werden nicht global definiert.
 - `card-mod-dialog` und `card-mod-more-info`: Hintergrundvariablen in Dialogen und Entitätsdetails. Zustandsfarben, Warnungen und Bedienelemente behalten ihre Funktion.
 - Media-Block aus 0.1.2 bleibt separat erhalten. Dashboard-Konfigurationen werden durch das Repository nicht verändert.
 
 Diese Version verwendet die dokumentierten Panel-/Tabellenvariablen von Home Assistant 2026.11 und die Theme-Unterstützung von card-mod. Komponenten mit eigenen festen Farben oder weiteren Shadow-Root-Grenzen können zusätzliche gezielte Anpassungen benötigen. Eine vollständige visuelle Abdeckung aller HA-Unterseiten ist damit nicht zugesichert; die Screenshots von Einstellungen und Marketplace sind die ersten Prüfpunkte nach Installation.
 
 Geprüft: YAML, Variablenverweise, Media-Template mit und ohne Kartenkonfiguration, keine globalen Kartenvariablen. Der visuelle Live-Test von 0.1.3 steht nach Marketplace-Installation aus. Kein automatischer Reload und keine JavaScript-Injektion.
+
+## Korrektur in 0.1.4 und verbleibende Grenzen
+
+Der Einstellungsrouter `ha-panel-config` rendert im Light DOM. Deshalb war der `:host`-Selektor im Konfigurationsblock von 0.1.3 wirkungslos. 0.1.4 verwendet den konkreten Elementselektor `ha-panel-config`; die Variablen bleiben auf diesen Einstellungsbaum begrenzt und wirken nicht auf Lovelace.
+
+Apps und Speicher liegen unter diesem Router und können die Werte erben. Der Quellcode der HA-Router wurde dafür geprüft. Eine visuelle Bestätigung erfolgt nach Installation.
+
+Die Marketplace-Tabelle verwendet bereits die nativen Tabellenvariablen. **Marketplace-Detailkarten bleiben vorerst separat:** `ha-panel-marketplace` ist ein eigener Panel-Root und wird vom card-mod-Konfigurationshook nicht erfasst. Globale Kartenvariablen wären dafür eine unerwünschte Abkürzung und werden weiterhin nicht gesetzt. Die übrigen Theme-Verbesserungen bleiben erhalten.

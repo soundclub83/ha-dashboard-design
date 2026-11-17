@@ -1,7 +1,7 @@
-# HA Dashboard Design 0.1.3
+# HA Dashboard Design 0.1.4
 # Gemeinsame dunkle Designbasis. Anwendung pro Ansicht.
 HA Dashboard Design:
-  dashboard-design-version: "0.1.3"
+  dashboard-design-version: "0.1.4"
   design-background: "#121b22"
   design-surface: "#1f2c34"
   design-text: "#d5dee6"
@@ -85,8 +85,9 @@ HA Dashboard Design:
   input-outlined-hover-border-color: "var(--design-muted)"
   mdc-dialog-scrim-color: "rgba(0,0,0,.55)"
   markdown-code-background-color: "var(--design-input-background)"
+  # ha-panel-config rendert im Light DOM: hier kein :host verwenden.
   card-mod-config: |
-    :host {
+    ha-panel-config {
       --card-background-color: var(--design-admin-surface);
       --ha-card-background: var(--design-admin-surface);
       --ha-card-border-radius: var(--design-admin-radius);

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.7
+
+- Clock Weather Card erhält den Wetterrahmen direkt statt eines transparenten Inhalts für verschachtelte Hüllen.
+- Ermöglicht direkt im Dashboard editierbare Wetterkarten mit nativen Sichtbarkeitsregeln; Warnkartendesign unverändert.
+
+
 ## 0.1.6
 
 - Zentrale Designwerte und gezielte Theme-Regeln für markierte Wetterrahmen und DWD-Warnkarten.

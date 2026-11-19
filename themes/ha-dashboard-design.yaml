@@ -1,7 +1,7 @@
-# HA Dashboard Design 0.1.6
+# HA Dashboard Design 0.1.7
 # Gemeinsame dunkle Designbasis. Anwendung pro Ansicht.
 HA Dashboard Design:
-  dashboard-design-version: "0.1.6"
+  dashboard-design-version: "0.1.7"
   design-background: "#121b22"
   design-surface: "#1f2c34"
   design-text: "#d5dee6"
@@ -100,10 +100,10 @@ HA Dashboard Design:
     {% endif %}
     {% if config is defined and config.type is defined and config.type == 'custom:clock-weather-card' %}
     ha-card {
-      background: transparent !important;
-      border: none !important;
-      border-radius: var(--design-weather-inner-radius) !important;
-      box-shadow: none !important;
+      background: var(--design-weather-background) !important;
+      border: var(--design-weather-border) !important;
+      border-radius: var(--design-weather-radius) !important;
+      box-shadow: var(--design-weather-shadow) !important;
       --primary-text-color: var(--design-weather-text);
       --secondary-text-color: var(--design-weather-muted);
       --accent-color: var(--design-weather-accent);

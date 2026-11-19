@@ -1,6 +1,6 @@
 # HA Dashboard Design
 
-Version **0.1.6**. Gemeinsame dunkle Designbasis für die gesamte Home-Assistant-Oberfläche und globale Standardflächen. Individuelle Karten bleiben separat konfiguriert.
+Version **0.1.7**. Gemeinsame dunkle Designbasis für die gesamte Home-Assistant-Oberfläche und globale Standardflächen. Individuelle Karten bleiben separat konfiguriert.
 
 ## Globale Standards und individuelle Karten
 
@@ -78,3 +78,10 @@ Eine DWD-Markdownkarte erhält `design_role: dwd-warning`. Das Theme übernimmt 
 Die vorhandenen lokalen Regeln erst nach Installation und bewusst freigegebenem Laden von 0.1.6 auf die zentralen Werte umstellen. Das Repository verändert keine Dashboards und löst keinen Reload aus. Andere Markdownkarten bekommen keine Warnfarben. Der bisherige Mini-Media-Player-Block bleibt erhalten.
 
 Prüfung: YAML und Variablen, neun HA-Template-Fälle einschließlich fehlender Konfiguration und unveränderter anderer Kartentypen. Visuelle Prüfung folgt nach Installation und Umstellung der markierten Karten.
+
+
+## Direkte Wetterkarten ab 0.1.7
+
+Clock Weather Card erhält den Wetterrahmen direkt über das Theme. Eine äußere Button-Karte ist nicht nötig; dadurch ist ihr eigener visueller Editor direkt erreichbar. `title` wird durch den Karteneditor bearbeitet. Die bisherigen Rahmen- und Überschriftenvariablen für ausdrücklich markierte alte Hüllen bleiben zur Kompatibilität bestehen.
+
+Die ursprünglichen vier Wetterkarten (aktuell, zwei Stundenvarianten, täglich) stehen direkt auf Abschnittsebene. Die beiden Stundenvarianten wechseln über native HA-`visibility`-Regeln. Der zusätzliche Regenhinweis ist eine eigene, mit denselben Regeln sichtbare Karte. Bestehende Wetteroptionen, Template-Balkenkorrekturen und DWD-Warnkarte bleiben unverändert. Erst nach Installation von 0.1.7 die bisher verschachtelten Karten umstellen; vorher sichern. Kein automatischer Reload.

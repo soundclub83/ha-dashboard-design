@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.6
+
+- Zentrale Designwerte und gezielte Theme-Regeln für markierte Wetterrahmen und DWD-Warnkarten.
+- Clock Weather Card erhält einen gezielten transparenten Inhaltshintergrund und zentrale Text-/Akzentwerte.
+- Überschriftenvariablen für Bubble-Separatoren; lokale Bindung bleibt nötig.
+- Warnstufenlogik, Wetterfunktionen und individuelle andere Karten bleiben erhalten.
+- YAML und neun HA-Template-Fälle erfolgreich geprüft; Live-Sichtprüfung nach Installation ausstehend.
+
 ## 0.1.5
 
 - Globale Standardhintergründe für Karten-/Menüflächen nach dem Vorbild eines vollständigen HA-Themes.

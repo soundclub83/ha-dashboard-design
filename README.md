@@ -1,6 +1,6 @@
 # HA Dashboard Design
 
-Version **0.1.5**. Gemeinsame dunkle Designbasis für die gesamte Home-Assistant-Oberfläche und globale Standardflächen. Individuelle Karten bleiben separat konfiguriert.
+Version **0.1.6**. Gemeinsame dunkle Designbasis für die gesamte Home-Assistant-Oberfläche und globale Standardflächen. Individuelle Karten bleiben separat konfiguriert.
 
 ## Globale Standards und individuelle Karten
 
@@ -65,3 +65,16 @@ Geprüft: YAML, Variablenverweise und unveränderte gezielte Player-Regeln. Eine
 ## Lizenz
 
 MIT, siehe LICENSE.
+
+
+## Wetter und DWD-Warnkarte ab 0.1.6
+
+Die `design-weather-*`-Werte bestimmen Rahmenfläche, Verlauf, Rand, Rundung, Schatten, Innenabstand, Text-/Akzentfarben sowie die Überschrift mit Trennlinie. Der `card-mod-card`-Block gestaltet gezielt `custom:clock-weather-card` transparent innerhalb des Rahmens. Dessen Wetterdaten, Optionen und funktionale Balkenkorrekturen bleiben lokal.
+
+Eine äußere `custom:button-card` erhält `design_role: weather-frame`. Nur ausdrücklich markierte Wetterrahmen werden durch diesen Block gestaltet; andere Button-Karten bleiben unverändert. Die Bubble-Überschrift verwendet weiterhin einen kurzen lokalen Stilblock, der die zentralen `design-weather-header-*`-Variablen bindet. Layout und Abstände zwischen den Elementen bleiben Teil der Kartenanordnung.
+
+Eine DWD-Markdownkarte erhält `design_role: dwd-warning`. Das Theme übernimmt Rundung, Innenabstand, Typografie und die fünf Warnfarben (`design-warning-level-0-rgb` bis `design-warning-level-4-rgb`) samt Hintergrund-/Rahmendeckkraft. Die bestehende lokale Warnstufenlogik setzt ausschließlich `--design-warning-rgb` auf eine dieser Variablen. Warntexte, Zeitangaben, Entitäten, Vorwarnung und Zustandsauswertung bleiben unverändert. Das Theme fragt selbst keine persönlichen DWD-Entitäten ab.
+
+Die vorhandenen lokalen Regeln erst nach Installation und bewusst freigegebenem Laden von 0.1.6 auf die zentralen Werte umstellen. Das Repository verändert keine Dashboards und löst keinen Reload aus. Andere Markdownkarten bekommen keine Warnfarben. Der bisherige Mini-Media-Player-Block bleibt erhalten.
+
+Prüfung: YAML und Variablen, neun HA-Template-Fälle einschließlich fehlender Konfiguration und unveränderter anderer Kartentypen. Visuelle Prüfung folgt nach Installation und Umstellung der markierten Karten.

@@ -1,7 +1,7 @@
-# HA Dashboard Design 0.1.7
+# HA Dashboard Design 0.1.8
 # Gemeinsame dunkle Designbasis. Anwendung pro Ansicht.
 HA Dashboard Design:
-  dashboard-design-version: "0.1.7"
+  dashboard-design-version: "0.1.8"
   design-background: "#121b22"
   design-surface: "#1f2c34"
   design-text: "#d5dee6"
@@ -107,6 +107,48 @@ HA Dashboard Design:
       --primary-text-color: var(--design-weather-text);
       --secondary-text-color: var(--design-weather-muted);
       --accent-color: var(--design-weather-accent);
+    }
+    {% endif %}
+    {% if config is defined and config.type is defined and config.type == 'custom:clock-weather-card' %}
+    {% set forecast_type = config.get('sections', {}).get('forecast_list', {}).get('forecast_type', '') %}
+    {% if forecast_type == 'hourly' %}
+    {% set icon_path = 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16zm-1 2v7l6 3 1-1.7-5-2.5V6z' %}
+    {% elif forecast_type == 'daily' %}
+    {% set icon_path = 'M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V10h14zm0-12H5V6h14z' %}
+    {% else %}
+    {% set icon_path = 'M19 10a7 7 0 0 0-13-2A5 5 0 0 0 6 18h13a4 4 0 0 0 0-8zm0 6H6a3 3 0 0 1 0-6h1.5l.4-1.4A5 5 0 0 1 17.8 11l.2 1H19a2 2 0 0 1 0 4z' %}
+    {% endif %}
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: var(--design-weather-header-height);
+      font-size: var(--design-weather-header-size) !important;
+      font-weight: var(--design-weather-header-weight) !important;
+      line-height: 1.4;
+      letter-spacing: 0;
+      color: var(--design-weather-text);
+      padding: 16px 16px 0;
+      margin: 0 0 12px;
+    }
+    .card-header::before {
+      content: '';
+      display: block;
+      flex: 0 0 var(--design-weather-header-icon-size);
+      width: var(--design-weather-header-icon-size);
+      height: var(--design-weather-header-icon-size);
+      background: currentColor;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='{{ icon_path }}'/%3E%3C/svg%3E") center / contain no-repeat;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='{{ icon_path }}'/%3E%3C/svg%3E") center / contain no-repeat;
+    }
+    .card-header::after {
+      content: '';
+      height: 2px;
+      min-width: 16px;
+      flex: 1;
+      margin-left: 6px;
+      border-radius: 999px;
+      background: var(--design-weather-header-line);
     }
     {% endif %}
     {% if config is defined and config.type is defined and config.type == 'markdown' and config.design_role | default('') == 'dwd-warning' %}

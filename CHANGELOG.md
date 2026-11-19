@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.8
+
+- Native Clock-Weather-Titel verwenden die zentralen Größen, Schriftstärke und Trennlinie.
+- Dekoratives Wetter-/Uhr-/Kalendericon abhängig von der Vorhersageart; Titeltext bleibt im GUI-Editor bearbeitbar.
+- Keine zusätzliche Karte oder Hülle.
+
+
 ## 0.1.7
 
 - Clock Weather Card erhält den Wetterrahmen direkt statt eines transparenten Inhalts für verschachtelte Hüllen.
